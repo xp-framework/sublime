@@ -6,6 +6,9 @@ import os
 
 class CompleteTypes(sublime_plugin.EventListener):
     def on_query_completions(self, view, prefix, locations):
+        if view.file_name() is None:
+            return
+
         completions = []
 
         line = view.substr(view.line(view.sel()[0]));
