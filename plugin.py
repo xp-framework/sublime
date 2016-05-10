@@ -32,7 +32,14 @@ class CompleteTypes(sublime_plugin.EventListener):
             else:
                 info = None
 
-            proc = subprocess.Popen('xp "' + os.path.join(os.path.dirname(__file__), 'types.script.php') + '" "' + package + '"', stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, startupinfo=info, cwd=base)
+            proc = subprocess.Popen(
+                'xp "' + os.path.join(os.path.dirname(__file__), 'types.script.php') + '" "' + package + '"',
+                stdin=subprocess.PIPE,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                startupinfo=info,
+                cwd=base
+            )
             output, error = proc.communicate()
 
             # Transform output
