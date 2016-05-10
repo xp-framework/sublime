@@ -58,6 +58,9 @@
     "callable",
     "void",
 
+    "null",
+    "false",
+    "true",
     "__DIR__",
     "__FILE__",
 
