@@ -35,23 +35,27 @@ class CompleteTypes(sublime_plugin.EventListener):
             else:
                 info = None
 
-            proc = subprocess.Popen(
-                'xp "' + os.path.join(os.path.dirname(__file__), 'types.script.php') + '" "' + package + '"',
-                stdin=subprocess.PIPE,
-                stdout=subprocess.PIPE,
-                stderr=subprocess.STDOUT,
-                startupinfo=info,
-                cwd=base
-            )
-            output, error = proc.communicate()
+            command = 'xp "' + os.path.join(os.path.dirname(__file__), 'types.script.php') + '" "' + package + '"';
+            try:
+                proc = subprocess.Popen(
+                    command,
+                    stdin=subprocess.PIPE,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.STDOUT,
+                    startupinfo=info,
+                    cwd=base
+                )
+                output, error = proc.communicate()
 
-            # Transform output
-            for line in output.decode().split("\n"):
-                if (line.startswith(search)):
-                    completions.append(line.split('>>'));
+                # Transform output
+                for line in output.decode().split("\n"):
+                    if (line.startswith(search)):
+                        completions.append(line.split('>>'));
 
-
-        return completions
+                return completions
+            except FileNotFoundError as e:
+                sublime.status_message(str(e) + ' @ ' + command)
+                return []
 
 def disable_builtin_php():
     completions= os.path.join(sublime.packages_path(), 'PHP', 'PHP.sublime-completions')
