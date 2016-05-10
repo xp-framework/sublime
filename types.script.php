@@ -8,10 +8,10 @@ function completionsIn($l, $path) {
     $end= strlen($content) - 1;
     if ('/' === $content{$end}) {
       $package= substr($content, 0, $end);
-      yield sprintf("1 %s%s (package)>>%s\\", $namespace, $package, strtr($package, '.', '\\'));
+      yield sprintf("1 %s%s\tpackage>>%s\\", $namespace, $package, strtr($package, '.', '\\'));
     } else if (strstr($content, xp::CLASS_FILE_EXT)) {
       $type= substr($content, 0, -strlen(xp::CLASS_FILE_EXT));
-      yield sprintf("2 %s%s (type)>>%s", $namespace, $type, strtr($type, '.', '\\'));
+      yield sprintf("2 %s%s\ttype>>%s", $namespace, $type, strtr($type, '.', '\\'));
     }
   }
 }
