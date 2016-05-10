@@ -28,6 +28,6 @@ function completions($path) {
 
 $completions= iterator_to_array(completions($argv[1]));
 sort($completions);
-foreach ($completions as $completion) {
+foreach (array_unique($completions) as $completion) {
   echo substr($completion, 2), "\n";
 }
