@@ -1,0 +1,13 @@
+{
+  "scope" : "source.php - comment - string",
+  "completions" : [
+    { "trigger" : "cast", "contents" : "cast(${1:arg}, ${2:type})" },
+    { "trigger" : "is", "contents" : "is(${1:type}, ${2:arg})" },
+    { "trigger" : "with", "contents" : "with(${1:...args})" },
+    { "trigger" : "newinstance", "contents" : "newinstance(${1:type}, ${2:args} ${3:definition})" },
+    { "trigger" : "create", "contents" : "create(${1:spec}, ${2:...args})" },
+    { "trigger" : "literal", "contents" : "literal(${1:name})" },
+    { "trigger" : "typeof", "contents" : "typeof(${1:value})" },
+    { "trigger" : "nameof", "contents" : "nameof(${1:object})" }
+  ]
+}

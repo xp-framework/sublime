@@ -1,0 +1,53 @@
+{
+  "scope" : "source.php - comment - string",
+  "completions" : [
+    { "trigger": "strlen", "contents": "strlen(${1:string})" },
+    { "trigger": "strpos", "contents": "strpos(${1:haystack}, ${2:needle})" },
+    { "trigger": "strrpos", "contents": "strrpos(${1:haystack}, ${2:needle})" },
+    { "trigger": "strstr", "contents": "strstr(${1:haystack}, ${2:needle})" },
+    { "trigger": "stristr", "contents": "stristr(${1:haystack}, ${2:needle})" },
+    { "trigger": "strtolower", "contents": "strtolower(${1:str})" },
+    { "trigger": "strtoupper", "contents": "strtoupper(${1:string})" },
+    { "trigger": "strtr", "contents": "strtr(${1:str}, ${2:from}, ${3:to})" },
+    { "trigger": "substr", "contents": "substr(${1:string}, ${2:start})" },
+    { "trigger": "strncmp", "contents": "strncmp(${1:str1}, ${2:str2}, ${3:len})" },
+    { "trigger": "strncasecmp", "contents": "strncasecmp(${1:str1}, ${2:str2}, ${3:len})" },
+
+    { "trigger": "base64_decode", "contents": "base64_decode(${1:data})" },
+    { "trigger": "base64_encode", "contents": "base64_encode(${1:data})" },
+    { "trigger": "md5", "contents": "md5(${1:str})" },
+    { "trigger": "sha1", "contents": "sha1(${1:str})" },
+
+    { "trigger": "in_array", "contents": "in_array(${1:needle}, ${2:haystack})" },
+    { "trigger": "array_search", "contents": "array_search(${1:needle}, ${2:haystack})" },
+    { "trigger": "array_unique", "contents": "array_unique(${1:array})" },
+    { "trigger": "array_shift", "contents": "array_shift(${1:array})" },
+    { "trigger": "array_search", "contents": "array_search(${1:needle}, ${2:haystack})" },
+    { "trigger": "array_unshift", "contents": "array_unshift(${1:array}, ${2:var})" },
+    { "trigger": "array_pop", "contents": "array_pop(${1:array})" },
+    { "trigger": "array_push", "contents": "array_push(${1:array}, ${2:var})" },
+    { "trigger": "array_merge", "contents": "array_merge(${1:array1})" },
+    { "trigger": "array_keys", "contents": "array_keys(${1:input})" },
+    { "trigger": "array_values", "contents": "array_values(${1:input})" },
+    { "trigger": "array_diff", "contents": "array_diff(${1:array1}, ${2:array2})" },
+    { "trigger": "array_map", "contents": "array_map(${1:callback}, ${2:arr1})" },
+
+    { "trigger": "iterator_apply", "contents": "iterator_apply(${1:iterator}, ${2:function})" },
+    { "trigger": "iterator_count", "contents": "iterator_count(${1:iterator})" },
+    { "trigger": "iterator_to_array", "contents": "iterator_to_array(${1:iterator})" },
+
+    { "trigger": "is_array", "contents": "is_array(${1:var})" },
+    { "trigger": "is_bool", "contents": "is_bool(${1:var})" },
+    { "trigger": "is_callable", "contents": "is_callable(${1:name})" },
+    { "trigger": "is_double", "contents": "is_double()" },
+    { "trigger": "is_int", "contents": "is_int(${1:var})" },
+    { "trigger": "is_numeric", "contents": "is_numeric(${1:var})" },
+    { "trigger": "is_object", "contents": "is_object(${1:var})" },
+    { "trigger": "is_string", "contents": "is_string(${1:var})" },
+
+    { "trigger": "is_dir", "contents": "is_dir(${1:filename})" },
+    { "trigger": "is_file", "contents": "is_file(${1:filename})" },
+
+    { "trigger": "var_dump", "contents": "var_dump(${1:expression})" }
+  ]
+}

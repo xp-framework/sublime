@@ -1,0 +1,66 @@
+{
+  "scope" : "source.php",
+  "completions" : [
+    "namespace",
+    "use",
+
+    "if",
+    "else",
+    "switch",
+    "case",
+    "default",
+
+    "do",
+    "while",
+    "for",
+    "foreach",
+    "break",
+    "continue",
+    "goto",
+
+    "try",
+    "catch",
+    "throw",
+    "finally",
+
+    "class",
+    "interface",
+    "trait",
+    "extends",
+    "implements",
+
+    "public",
+    "private",
+    "protected",
+    "abstract",
+    "final",
+
+    "self",
+    "parent",
+    "static",
+
+    "new",
+    "clone",
+    "instanceof",
+
+    "function",
+    "return",
+    "yield",
+
+    "isset",
+    "unset",
+    "empty",
+
+    "string",
+    "int",
+    "double",
+    "array",
+    "callable",
+    "void",
+
+    "__DIR__",
+    "__FILE__",
+
+    "echo"
+  ]
+}
