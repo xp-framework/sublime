@@ -18,7 +18,7 @@ function completionsIn($l, $path) {
 
 function completions($path) {
   foreach (ClassLoader::getLoaders() as $l) {
-    if ($l->providesResource('autoload.php') || $l->providesResource('__xp.php')) {
+    if (!$l->providesResource('composer.json')) {
       foreach (completionsIn($l, $path) as $completion) {
         yield $completion;
       }
