@@ -4,8 +4,34 @@ import sublime_plugin
 import subprocess
 import os
 
+class XpFormat(sublime_plugin.TextCommand):
+    def is_enabled(self):
+        return self.view.match_selector(0, 'embedding.php')
+
+    def run(self, edit):
+
+        # Sort imports
+        imports = []
+        uses = self.view.find_all('^use [^;]+;')
+        if not uses:
+            return
+
+        for match in uses:
+            imports.append(self.view.substr(match))
+
+        imports.sort()
+        self.view.replace(edit, sublime.Region(uses[0].begin(), uses[len(uses) - 1].end()), "\n".join(imports))
+
+
 class CompleteTypes(sublime_plugin.EventListener):
-    def on_query_completions(self, view, prefix, locations):
+     def on_pre_save(self, view):
+        if not view.match_selector(0, 'embedding.php'):
+            return
+
+        print('>> Saving ' + view.file_name())
+        view.run_command('xp_format')
+
+     def on_query_completions(self, view, prefix, locations):
         if view.file_name() is None:
             return
 
