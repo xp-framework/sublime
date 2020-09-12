@@ -11,16 +11,23 @@ class XpFormat(sublime_plugin.TextCommand):
     def run(self, edit):
 
         # Sort imports
-        imports = []
         uses = self.view.find_all('^use [^;]+;')
         if not uses:
             return
 
+        imports = {'local' : [], 'remote': []}
         for match in uses:
-            imports.append(self.view.substr(match))
+            line = self.view.substr(match)
+            imports['local' if line.find(' from ') == -1 else 'remote'].append(line)
 
-        imports.sort()
-        self.view.replace(edit, sublime.Region(uses[0].begin(), uses[len(uses) - 1].end()), "\n".join(imports))
+        imports['local'].sort()
+        if imports['remote']:
+            imports['remote'].sort()
+            lines = "\n".join(imports['remote']) + "\n\n" + "\n".join(imports['local'])
+        else:
+            lines = "\n".join(imports['local'])
+
+        self.view.replace(edit, sublime.Region(uses[0].begin(), uses[len(uses) - 1].end()), lines)
 
 
 class CompleteTypes(sublime_plugin.EventListener):
