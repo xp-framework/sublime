@@ -6,7 +6,7 @@ function completionsIn($l, $path) {
   $namespace= $path ? $path.'.' : '';
   foreach ($l->packageContents($path) as $content) {
     $end= strlen($content) - 1;
-    if ('/' === $content{$end}) {
+    if ('/' === $content[$end]) {
       $package= substr($content, 0, $end);
       yield sprintf("1 %s%s\tpackage>>%s\\", $namespace, $package, strtr($package, '.', '\\'));
     } else if (strstr($content, xp::CLASS_FILE_EXT)) {
