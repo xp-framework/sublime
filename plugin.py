@@ -15,19 +15,29 @@ class XpFormat(sublime_plugin.TextCommand):
         if not uses:
             return
 
-        imports = {'local' : [], 'remote': []}
+        imports = {'local' : [], 'remote': [], 'symbol' : []}
         for match in uses:
             line = self.view.substr(match)
-            imports['local' if line.find(' from ') == -1 else 'remote'].append(line)
+            if line.find(' function ') > -1:
+                kind = 'symbol'
+            elif line.find(' const ') > -1:
+                kind = 'symbol'
+            elif line.find(' from ') > -1:
+                kind = 'remote'
+            else:
+                kind = 'local'
 
-        imports['local'].sort()
-        if imports['remote']:
-            imports['remote'].sort()
-            lines = "\n".join(imports['remote']) + "\n\n" + "\n".join(imports['local'])
-        else:
-            lines = "\n".join(imports['local'])
+            imports[kind].append(line)
 
-        self.view.replace(edit, sublime.Region(uses[0].begin(), uses[len(uses) - 1].end()), lines)
+
+        lines = ''
+        for kind in ['local', 'remote', 'symbol']:
+            listof = imports[kind]
+            if listof:
+                listof.sort()
+                lines += "\n".join(listof) + "\n\n"
+
+        self.view.replace(edit, sublime.Region(uses[0].begin(), uses[len(uses) - 1].end()), lines.rstrip())
 
 
 class CompleteTypes(sublime_plugin.EventListener):
